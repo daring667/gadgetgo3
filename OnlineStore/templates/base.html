@@ -7,7 +7,7 @@
 {% load static %}
 <html>
 	<head>
-		<title>Artem Nalolin's Online Store</title>
+		<title>Gadget Go</title>
 		<meta charset="utf-8" />
 		<link rel="icon" href="{% static "images/logo.svg" %}" >
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -15,7 +15,6 @@
 		<noscript><link rel="stylesheet" href="{% static "assets/css/noscript.css"%}" /></noscript>
 		{% block css %}
 		{% endblock %}
-
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
@@ -24,6 +23,7 @@
                     {% include 'includes/header.html' %} 
 				<!-- Main -->
 					<div id="main">
+						
 						<div class="inner">
                             {% block content %}
 

@@ -3364,3 +3364,10 @@ input, select, textarea {
 
 		}
 
+/* Стили для изображения товаров */
+.item img.item-image {
+    width: 300px;                
+    height: 200px;              
+    object-fit: fill;          /* Обрезка и масштабирование изображения */
+    border-radius: 5px;         /* Сглаживание углов */
+}

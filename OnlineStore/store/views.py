@@ -33,8 +33,19 @@ def tag_details(request, slug):
 
 
 def tag_list(request):
-    tags = ItemTag.objects.all()
+    query = request.GET.get('query', '')  # Получаем поисковый запрос
+    tags = ItemTag.objects.all()  # Получаем все теги (категории)
+
+    # Фильтрация товаров по запросу
+    if query:
+        items = Item.objects.filter(title__icontains=query, is_available=True)  # Фильтруем товары по названию
+    else:
+        items = Item.objects.filter(is_available=True)  # Без фильтрации, если запрос пуст
+
     context = {
-        'page_obj': paginator(request, tags, 6),
+        'page_obj': paginator(request, items, 6),  # Пагинация
+        'tags': tags,  # Отображаем все теги
+        'query': query,  # Передаем поисковый запрос в контекст
     }
     return render(request, 'store/tag_list.html', context)
+

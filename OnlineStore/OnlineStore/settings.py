@@ -136,7 +136,17 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'store:home'
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+load_dotenv()
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # email, например, 'stepan555bal@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # пароль почты
+PASSWORD_RESET_TIMEOUT = 3600  # Срок действия ссылки 1 час
+# SITE_DOMAIN = '127.0.0.1:8000'
+DEFAULT_FROM_EMAIL = 'no-reply@example.com'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 # Telegram
